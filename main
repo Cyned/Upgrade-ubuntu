@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo -n "Enter your way to file with commands: "
+read way_to_file
+
+IFS=$'\n'
+
+for item in $(cat $way_to_file)
+do
+
+    if [[ "$item" == *#* || "$item" == *\** ]]; then
+        continue
+    else
+    if [[ "$item" == ^umake* ]]; then
+        if [[ "$item" == ^umake ide idea-ultimate ]]; then
+            eval "yes '/home/$USER/.local/share/umake/ide/idea-ultimate' | $item"
+        elif [[ "$item" == ^umake ide pycharm-professional ]]; then
+            eval "yes '/home/$USER/.local/share/umake/ide/pycharm-professional' | $item"
+        elif [[ "$item" == ^umake ide sublime-text ]]; then
+            eval "yes '/home/$USER/.local/share/umake/ide/sublime-text' | $item"
+        fi
+    elif [[ "$item" == *install.sh* ]]; then
+        eval "$item"
+    else
+        eval "yes '' | $item"
+    fi
+    fi
+
+done
+
