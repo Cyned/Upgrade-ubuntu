@@ -1,4 +1,4 @@
-#Upgrade-ubuntu
+# Upgrade-ubuntu
 ---
 Bash script for the installing of the applications on ubuntu
 ```sh
